@@ -22,6 +22,14 @@ class PersecController {
     @Autowired
     lateinit var userRoleRepository: UserRoleRepository
 
+    @Autowired
+    lateinit var userRepository: UserRepository
+
+    @GetMapping("/users")
+    fun getAllUsers(): MutableList<User>? {
+        return userRepository.findAll()
+    }
+
     @GetMapping("/roles")
     fun getAllRoles(): MutableList<Role>? {
         return roleRepository.findAll()

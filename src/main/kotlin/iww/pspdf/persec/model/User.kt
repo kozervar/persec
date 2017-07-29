@@ -13,7 +13,7 @@ interface UserRepository : JpaRepository<User, Long>
 
 @Table(name = "USR")
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.None::class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "userName")
 data class User constructor(
 
         @Id
@@ -54,5 +54,8 @@ data class User constructor(
 
         @Column(nullable = false)
         @NotNull
-        var salt: String = ""
+        var salt: String = "",
+
+        @OneToMany(mappedBy = "user")
+        var roles: List<UserRole>
 )

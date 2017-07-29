@@ -10,12 +10,12 @@ import java.io.Serializable
 import javax.persistence.*
 
 @Repository
-interface UserRoleRepository : JpaRepository<UserRole, Long> {
+interface RoleUserRepository : JpaRepository<RoleUser, Long> {
 
-        @Query("SELECT ur.role FROM UserRole ur WHERE ur.user.id = ?1")
+        @Query("SELECT ur.role FROM RoleUser ur WHERE ur.user.id = ?1")
         fun findUserRoles(userId:Long):MutableList<Role>
 
-        @Query("SELECT ur.user FROM UserRole ur WHERE ur.role.id = ?1")
+        @Query("SELECT ur.user FROM RoleUser ur WHERE ur.role.id = ?1")
         fun findRoleUsers(roleId:Long):MutableList<User>
 }
 
@@ -23,7 +23,7 @@ interface UserRoleRepository : JpaRepository<UserRole, Long> {
 @Table(name = "USR_ROLE")
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.None::class)
-data class UserRole constructor(
+data class RoleUser constructor(
 
         @JsonIgnore
         @Id
@@ -31,11 +31,11 @@ data class UserRole constructor(
         @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "usr_role_seq")
         var id: Long = -1,
 
-        @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name="usr_id", nullable=false)
         var user:User,
-        
+
+        @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name="role_id", nullable=false)
         var role:Role
