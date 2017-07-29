@@ -1,0 +1,3 @@
+FROM postgres:9.2-alpine
+ENV POSTGRES_USER persec
+ENV POSTGRES_PASSWORD persec
