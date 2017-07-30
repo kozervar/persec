@@ -26,6 +26,6 @@ data class Role constructor(
 
         @JsonIgnore
         @OneToMany(mappedBy = "role")
-        var users: List<UserRole>
+        var users: List<UserRole> = arrayListOf()
 
 )

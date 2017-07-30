@@ -8,5 +8,15 @@ import org.springframework.context.annotation.Configuration
 @ConfigurationProperties(prefix = "persec")
 class PersecConfig {
 
-    var salt:String = ""
+    var security: Security = Security()
+
+}
+
+class Security {
+
+    var pepper = ""
+
+    var pub = ""
+
+    var priv = ""
 }

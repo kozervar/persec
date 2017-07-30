@@ -28,5 +28,5 @@ data class Permission constructor(
         var parent:Permission,
 
         @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
-        var subPermissions: List<Permission> = ArrayList()
+        var subPermissions: List<Permission> = arrayListOf()
 )

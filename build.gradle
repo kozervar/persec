@@ -49,9 +49,14 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-configuration-processor")
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+	compile("commons-codec:commons-codec:1.10")
 	compile('org.flywaydb:flyway-core:4.2.0')
+	compile('org.abstractj.kalium:kalium:0.7.0')
+	compile('io.github.microutils:kotlin-logging:1.4.6')
+
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }

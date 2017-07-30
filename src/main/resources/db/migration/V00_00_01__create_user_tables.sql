@@ -6,14 +6,17 @@
 
 CREATE TABLE usr (
   id                       BIGINT       NOT NULL CONSTRAINT USR_pkey PRIMARY KEY,
-  enabled                  BOOLEAN      NOT NULL,
+  enabled                  BOOLEAN      NOT NULL DEFAULT FALSE,
+  expired                  BOOLEAN      NOT NULL DEFAULT FALSE,
+  credentials_expired      BOOLEAN      NOT NULL DEFAULT FALSE,
+  locked                   BOOLEAN      NOT NULL DEFAULT FALSE,
   last_password_reset_date TIMESTAMP,
   last_update_date         TIMESTAMP,
   first_name               VARCHAR(50)  NOT NULL,
   last_name                VARCHAR(50)  NOT NULL,
   user_name                VARCHAR(50)  NOT NULL CONSTRAINT uk_usr_username UNIQUE,
   email                    VARCHAR(50)  NOT NULL,
-  password                 VARCHAR(256) NOT NULL,
+  password                 VARCHAR(2048) NOT NULL,
   salt                     VARCHAR(256) NOT NULL,
   modified_by              VARCHAR(255)
 );
@@ -32,7 +35,7 @@ CREATE TABLE PERMISSION
 (
   id        BIGINT       NOT NULL CONSTRAINT permission_pkey PRIMARY KEY,
   name      VARCHAR(255) NOT NULL CONSTRAINT uk_permission_name UNIQUE,
-  parent_id BIGINT       NULL CONSTRAINT ref_permission_permission_id REFERENCES PERMISSION(id)
+  parent_id BIGINT       NULL CONSTRAINT ref_permission_permission_id REFERENCES PERMISSION (id)
 );
 
 CREATE SEQUENCE permission_seq;
@@ -40,8 +43,8 @@ CREATE SEQUENCE permission_seq;
 CREATE TABLE ROLE_PERMISSION
 (
   id            BIGINT  NOT NULL CONSTRAINT role_permission_pkey PRIMARY KEY,
-  role_id       BIGINT  NOT NULL CONSTRAINT ref_role_permission_role_id REFERENCES ROLE(id),
-  permission_id BIGINT  NOT NULL CONSTRAINT ref_role_permission_permission_id REFERENCES PERMISSION(id),
+  role_id       BIGINT  NOT NULL CONSTRAINT ref_role_permission_role_id REFERENCES ROLE (id),
+  permission_id BIGINT  NOT NULL CONSTRAINT ref_role_permission_permission_id REFERENCES PERMISSION (id),
   c             BOOLEAN NOT NULL DEFAULT TRUE,
   r             BOOLEAN NOT NULL DEFAULT TRUE,
   u             BOOLEAN NOT NULL DEFAULT TRUE,

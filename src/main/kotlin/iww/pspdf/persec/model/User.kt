@@ -9,7 +9,10 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Repository
-interface UserRepository : JpaRepository<User, Long>
+interface UserRepository : JpaRepository<User, Long>{
+
+        fun findByUserName(userName:String):User?
+}
 
 @Table(name = "USR")
 @Entity
@@ -34,6 +37,18 @@ data class User constructor(
 
         @Column(nullable = false)
         @NotNull
+        var expired: Boolean = false,
+
+        @Column(nullable = false)
+        @NotNull
+        var credentialsExpired: Boolean = false,
+
+        @Column(nullable = false)
+        @NotNull
+        var locked: Boolean = false,
+
+        @Column(nullable = false)
+        @NotNull
         var firstName: String = "",
 
         @Column(nullable = false)
@@ -54,8 +69,8 @@ data class User constructor(
 
         @Column(nullable = false)
         @NotNull
-        var salt: String = "",
-
-        @OneToMany(mappedBy = "user")
-        var roles: List<UserRole>
+        var salt: String = ""
+//
+//        @OneToMany(mappedBy = "user")
+//        var roles: List<UserRole> = arrayListOf()
 )

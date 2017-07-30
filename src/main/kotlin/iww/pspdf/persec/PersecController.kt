@@ -1,6 +1,7 @@
 package iww.pspdf.persec
 
 import iww.pspdf.persec.model.*
+import iww.pspdf.persec.security.PersecSecurityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -24,6 +25,16 @@ class PersecController {
 
     @Autowired
     lateinit var userRepository: UserRepository
+
+    @Autowired
+    lateinit var secSer: PersecSecurityService
+
+
+    @GetMapping("/hash/{password}")
+    fun getHash(@PathVariable password:String): String? {
+        val hash = secSer.getEncryptedPassword(password)
+        return hash
+    }
 
     @GetMapping("/users")
     fun getAllUsers(): MutableList<User>? {
