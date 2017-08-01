@@ -1,12 +1,10 @@
-package iww.pspdf.persec.model
+package iww.persec.model
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.ObjectIdGenerators
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
-import java.io.Serializable
 import javax.persistence.*
 
 @Repository
@@ -32,9 +30,9 @@ data class RolePermission constructor(
 
         @ManyToOne(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name="role_id", nullable=false)
-        var role:Role,
+        var role: Role,
 
         @ManyToOne(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name="permission_id", nullable=false)
-        var permission:Permission
+        var permission: Permission
 )

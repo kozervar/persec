@@ -1,6 +1,6 @@
-package iww.pspdf.persec.security
+package iww.persec.security
 
-import iww.pspdf.persec.PersecConfig
+import iww.persec.PersecConfig
 import mu.KLogging
 import org.abstractj.kalium.NaCl
 import org.abstractj.kalium.crypto.Aead

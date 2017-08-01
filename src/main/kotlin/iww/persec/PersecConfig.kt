@@ -1,4 +1,4 @@
-package iww.pspdf.persec
+package iww.persec
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
@@ -10,13 +10,12 @@ class PersecConfig {
 
     var security: Security = Security()
 
-}
+    class Security {
 
-class Security {
+        var pepper = ""
 
-    var pepper = ""
+        var pub = ""
 
-    var pub = ""
-
-    var priv = ""
+        var priv = ""
+    }
 }

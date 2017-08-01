@@ -1,7 +1,7 @@
-package iww.pspdf.persec.security
+package iww.persec.security
 
-import iww.pspdf.persec.model.UserRepository
-import iww.pspdf.persec.model.UserRoleRepository
+import iww.persec.model.UserRepository
+import iww.persec.model.UserRoleRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

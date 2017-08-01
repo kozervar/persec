@@ -1,4 +1,4 @@
-package iww.pspdf.persec.model
+package iww.persec.model
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.ObjectIdGenerators
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull
 @Repository
 interface UserRepository : JpaRepository<User, Long>{
 
-        fun findByUserName(userName:String):User?
+        fun findByUserName(userName:String): User?
 }
 
 @Table(name = "USR")

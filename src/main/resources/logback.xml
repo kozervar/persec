@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <property name="APP_WITH_CONTEXT_CONSOLE_LOG_PATTERN" value="${APP_WITH_CONTEXT_CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr([USER=%X{MDC_USERNAME}]){yellow} %clr([IP=%X{MDC_IP}]){yellow} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <appender name="CONSOLE_APP_WITH_CONTEXT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${APP_WITH_CONTEXT_CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="iww.persec" level="DEBUG" />
+
+    <logger name="iww.persec.web.MDCContextInterceptor"
+            level="DEBUG"
+            additivity="false">
+        <appender-ref ref="CONSOLE_APP_WITH_CONTEXT" />
+    </logger>
+
+    <!-- put your root here -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

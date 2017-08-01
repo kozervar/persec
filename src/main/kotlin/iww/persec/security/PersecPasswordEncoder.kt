@@ -1,4 +1,4 @@
-package iww.pspdf.persec.security
+package iww.persec.security
 
 import org.springframework.security.crypto.password.PasswordEncoder
 

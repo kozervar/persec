@@ -1,7 +1,8 @@
-package iww.pspdf.persec
+package iww.persec
 
-import iww.pspdf.persec.model.*
-import iww.pspdf.persec.security.PersecSecurityService
+import iww.persec.model.*
+import iww.persec.model.*
+import iww.persec.security.PersecSecurityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

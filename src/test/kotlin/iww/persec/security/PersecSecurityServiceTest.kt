@@ -1,6 +1,7 @@
-package iww.pspdf.persec.security
+package iww.persec.security
 
-import iww.pspdf.persec.PersecConfig
+import iww.persec.PersecConfig
+import iww.persec.security.PersecSecurityService
 import mu.KLogging
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test

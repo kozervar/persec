@@ -1,7 +1,7 @@
-package iww.pspdf.persec.security
+package iww.persec.security
 
-import iww.pspdf.persec.model.Role
-import iww.pspdf.persec.model.User
+import iww.persec.model.Role
+import iww.persec.model.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

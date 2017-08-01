@@ -1,4 +1,4 @@
-package iww.pspdf.persec.model
+package iww.persec.model
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.JsonIgnore

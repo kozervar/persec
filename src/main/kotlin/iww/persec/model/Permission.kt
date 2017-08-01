@@ -1,4 +1,4 @@
-package iww.pspdf.persec.model
+package iww.persec.model
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.JsonIgnore
@@ -25,7 +25,7 @@ data class Permission constructor(
 
         @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
-        var parent:Permission,
+        var parent: Permission,
 
         @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
         var subPermissions: List<Permission> = arrayListOf()
